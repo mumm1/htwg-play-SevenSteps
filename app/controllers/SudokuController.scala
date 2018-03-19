@@ -5,17 +5,26 @@ import javax.inject._
 import play.api.mvc._
 import de.htwg.se.sudoku.Sudoku
 import de.htwg.se.sudoku.controller.controllerComponent.GameStatus
+import de.htwg.se.SevenSteps.controller._
 //import play.api.libs.json.Json
 
 
 @Singleton
 class SudokuController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+
+  val gameControllerSevenSteps = de.htwg.se.SevenSteps.controller.basicImpl.Controller
+  val tui = de.htwg.se.SevenSteps.aview.tui
+
   val gameController = Sudoku.controller
   def message = GameStatus.message(gameController.gameStatus)
   def sudokuAsText =  gameController.gridToString + message
 
   def about= Action {
     Ok(views.html.index())
+  }
+
+  def sevenSteps = Action {
+    Ok(views.html.sudoku(gameController, message))
   }
 
   def sudoku = Action {

@@ -4,6 +4,7 @@
 
 # Controller for Sudoku
 
+GET     /sevensteps                 controllers.SudokuController.sevensteps
 GET     /                           controllers.SudokuController.sudoku
 GET     /new                        controllers.SudokuController.newGrid
 GET     /solve                      controllers.SudokuController.solve
