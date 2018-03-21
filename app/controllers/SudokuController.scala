@@ -6,6 +6,7 @@ import play.api.mvc._
 import de.htwg.se.sudoku.Sudoku
 import de.htwg.se.sudoku.controller.controllerComponent.GameStatus
 import de.htwg.se.SevenSteps.controller._
+import de.htwg.se.sudoku.aview.Tui
 //import play.api.libs.json.Json
 
 
@@ -13,7 +14,12 @@ import de.htwg.se.SevenSteps.controller._
 class SudokuController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   val gameControllerSevenSteps = de.htwg.se.SevenSteps.controller.basicImpl.Controller
-  val tui = de.htwg.se.SevenSteps.aview.tui
+
+  val bag = de.htwg.se.SevenSteps.model.player.basicImpl.Player.toString()
+
+
+
+
 
   val gameController = Sudoku.controller
   def message = GameStatus.message(gameController.gameStatus)
@@ -24,7 +30,7 @@ class SudokuController @Inject()(cc: ControllerComponents) extends AbstractContr
   }
 
   def sevenSteps = Action {
-    Ok(views.html.sudoku(gameController, message))
+    Ok(views.html.sevenSteps(bag))
   }
 
   def sudoku = Action {

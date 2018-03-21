@@ -4,9 +4,9 @@
 
 # Controller for Sudoku
 
-GET     /sevensteps                 controllers.SudokuController.sevensteps
 GET     /                           controllers.SudokuController.sudoku
 GET     /new                        controllers.SudokuController.newGrid
+GET     /sevensteps                 controllers.SudokuController.sevenSteps
 GET     /solve                      controllers.SudokuController.solve
 GET     /highlight/:index           controllers.SudokuController.highlight(index:Int)
 GET     /resize/:size               controllers.SudokuController.resize(size:Int)
